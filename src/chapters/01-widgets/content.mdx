@@ -1,0 +1,41 @@
+widget คือกล่องที่คนอ่านเลื่อน slider แล้วกราฟ/ตัวเลขเปลี่ยนตาม ช่วยให้เห็นภาพมากกว่าอ่านสูตรเฉยๆ แนะนำ 2–3 ตัวต่อบท วางไว้หลังอธิบายเรื่องนั้นเสร็จ
+
+## Widget เริ่มต้น (ExampleWidget)
+
+ตัวนี้ตั้งใจให้ง่ายที่สุด ใช้ก๊อปไปทำ widget ใหม่ (`src/components/interactive/ExampleWidget.tsx`)
+
+<ExampleWidget />
+
+## Widget สถิติ (ตัวอย่างจากวิชา CEM II)
+
+### พื้นที่ใต้กราฟ Normal
+
+<NormalArea />
+
+### Central Limit Theorem
+
+<CLTSimulator />
+
+## สร้าง widget ใหม่
+
+<Def title="รูปแบบที่ทุก widget ใช้">
+
+1. เก็บค่าที่ปรับได้ด้วย `useState`
+2. คำนวณตัวเลขที่ต้องแสดงจาก state ตรงๆ
+3. วาดกราฟด้วย `useCanvas(draw)` และ `drawFrame()` (ได้แกน + ฟังก์ชันแปลงพิกัด `X()`, `Y()`)
+4. ห่อด้วย `<Widget>` แล้วใส่ `<Controls>` (slider), `<ButtonRow>` (ปุ่มลัด), `<PlotCanvas>`, `<Readout>`
+5. ลงทะเบียนใน `src/components/content/mdxComponents.ts` แล้วเรียกใน MDX ได้เลย เช่น `<MyWidget />`
+
+</Def>
+
+<Warn title="สีในกราฟ">
+
+ห้ามใส่สีตรงๆ ในโค้ดวาดกราฟ ให้ใช้ `cssVar('--accent')`, `cssVar('--muted')` ฯลฯ เสมอ กราฟจะเปลี่ยนสีตามธีมและโหมดมืดเอง ถ้าต้องการสีโปร่งใสใช้ `withAlpha(cssVar('--accent'), 0.3)`
+
+</Warn>
+
+<Tip title="ฟังก์ชันคณิตที่มีให้แล้ว">
+
+`src/lib/math.ts` มี `normalCdf`, `normalPdf`, `tCdf`, `chi2Cdf`, `invertCdf`, `logGamma`, `fmt` (จัดรูปตัวเลข) ฯลฯ · `src/lib/random.ts` มีตัวสุ่มแบบกำหนด seed (`mulberry32`)
+
+</Tip>
