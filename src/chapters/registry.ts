@@ -15,6 +15,8 @@ export interface Chapter {
   source: string
   /** what the chapter covers, one line */
   blurb: string
+  /** optional accent colour for this chapter (hex); recolours headings, widgets, menu badge. Leave out = theme accent */
+  accent?: string
   /** undefined → not written yet (shown as "เร็วๆ นี้") */
   Content?: LazyExoticComponent<ComponentType<MDXProps>>
 }

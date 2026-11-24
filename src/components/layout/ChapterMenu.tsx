@@ -1,3 +1,4 @@
+import type React from 'react'
 import { CHAPTERS, type Chapter } from '../../chapters/registry'
 import { site } from '../../site.config'
 import { navigate } from '../../lib/hooks'
@@ -26,7 +27,9 @@ export function ChapterMenu({ currentId, onPick }: Props) {
                 onPick?.()
               }}
             >
-              <span className={styles.no}>{c.no}</span>
+              <span className={styles.no} style={c.accent ? ({ '--c': c.accent } as React.CSSProperties) : undefined}>
+                {c.no}
+              </span>
               <span className={styles.text}>
                 <span className={styles.title}>{c.subtitle}</span>
                 {!ready && <span className={styles.soon}>เร็วๆ นี้</span>}

@@ -1,13 +1,36 @@
 .widget {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 16px 18px;
-  margin: 22px 0;
+  margin: 26px 0;
+  overflow: hidden;
+}
+.widget::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--ex) 70%, transparent), transparent);
 }
 .title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
   margin: 0 0 4px;
-  font-size: 16px;
+  font-size: 16.5px;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--surface);
 }
 .hint {
   font-size: 14px;
@@ -34,6 +57,10 @@
   border: 1px solid var(--border);
   background: var(--bg);
   cursor: pointer;
+}
+.buttons button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 .buttons button:hover {
   border-color: var(--accent);

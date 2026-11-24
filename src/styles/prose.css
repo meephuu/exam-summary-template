@@ -21,6 +21,33 @@
   font-size: 20px;
   line-height: 1.4;
   margin: 30px 0 6px;
+  color: color-mix(in srgb, var(--text) 82%, var(--accent));
+}
+.prose strong {
+  color: color-mix(in srgb, var(--text) 70%, var(--accent));
+}
+.prose mark {
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+  color: inherit;
+  padding: 0 3px;
+  border-radius: 4px;
+}
+/* <Figure>: pictures (e.g. white lecture slides) sit on a soft card */
+.prose figure {
+  margin: 18px 0;
+}
+.prose figure img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: #fff;
+}
+.prose figcaption {
+  font-size: 13.5px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 6px;
 }
 
 .prose p {

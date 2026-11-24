@@ -48,10 +48,10 @@
   font-size: 13px;
   font-weight: 600;
   background: var(--surface-2);
-  color: var(--muted);
+  color: var(--c, var(--muted));
 }
 .active .no {
-  background: var(--accent);
+  background: var(--c, var(--accent));
   color: var(--surface);
 }
 .text {

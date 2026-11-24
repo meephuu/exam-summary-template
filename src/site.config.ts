@@ -20,6 +20,10 @@ import type { ThemeConfig } from './styles/themes'
 export const site = {
   /** big name at the top of the sidebar; also used in the browser tab */
   title: 'สรุปเนื้อหา (ชื่อวิชา)',
+  /** optional: one short word shown big instead of `title` (e.g. 'NETWORK'); '' = show title */
+  brand: 'SUMMARY' as string,
+  /** optional: small uppercase line above the brand (e.g. 'Summary · Final'); '' = none */
+  brandSub: 'Exam · Final' as string,
   /** small line under the title */
   course: 'XXXXXXX COURSE NAME · ไฟนอล',
   /** footer text after the source of each chapter */
@@ -57,6 +61,8 @@ export const theme: ThemeConfig = {
  * no      → badge in the menu: a number for chapters, a letter for extra pages ('C')
  * group   → 'extra' puts the page in the second menu group (default: lessons)
  * source  → shown as "สรุปจาก <source>" under the title (slide file name, textbook chapter, …)
+ * accent  → optional hex colour for this chapter only (headings, widgets, menu badge). With mode 'auto'
+ *           pick a mid tone that reads on both light and dark backgrounds. Leave out = theme accent
  * Content → leave it out and the page shows as "เร็วๆ นี้" (coming soon)
  */
 export const CHAPTERS: Chapter[] = [
@@ -76,6 +82,7 @@ export const CHAPTERS: Chapter[] = [
     subtitle: 'Widget ตัวอย่าง',
     source: 'src/components/interactive',
     blurb: 'NormalArea, CLTSimulator, ExampleWidget และวิธีสร้าง widget ใหม่',
+    accent: '#d9822b', // example of a per-chapter colour
     Content: lazy(() => import('./chapters/01-widgets/content.mdx')),
   },
   {
@@ -95,6 +102,16 @@ export const CHAPTERS: Chapter[] = [
     source: 'ทุกบท',
     blurb: 'สูตรและทิปสำคัญจากทุกบท สำหรับจดโน้ตเข้าห้องสอบ',
     Content: lazy(() => import('./chapters/cheat-sheet/content.mdx')),
+  },
+  {
+    id: 'quiz',
+    no: 'Q',
+    group: 'extra',
+    title: 'Practice Quiz',
+    subtitle: 'Quiz',
+    source: 'src/chapters/quiz/questions.json',
+    blurb: 'ข้อสอบตัวเลือก ทำในเว็บ รู้ผลทันที จำคะแนนไว้ในเบราว์เซอร์',
+    Content: lazy(() => import('./chapters/quiz/content.mdx')),
   },
 ]
 

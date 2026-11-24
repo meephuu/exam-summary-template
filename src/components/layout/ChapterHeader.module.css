@@ -1,25 +1,62 @@
 .header {
-  padding: 8px 0 28px;
+  position: relative;
+  padding: 18px 0 28px;
   border-bottom: 1px solid var(--border);
 }
-.kicker {
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+/* soft blurred light behind the number, like the cover of the printed summary */
+.glow {
+  position: absolute;
+  z-index: -1;
+  left: -120px;
+  top: -140px;
+  width: 520px;
+  height: 420px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 16%, transparent), transparent);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+}
+.num {
+  font-size: 96px;
+  font-weight: 300;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
   color: var(--accent);
+  flex: none;
+}
+.text {
+  min-width: 0;
+  padding-bottom: 2px;
+}
+.kicker {
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
   font-weight: 600;
 }
 .title {
   font-size: 34px;
-  line-height: 1.3;
-  margin: 6px 0 10px;
+  line-height: 1.25;
+  margin: 6px 0 0;
 }
 .lead {
   color: var(--muted);
-  margin: 0;
+  margin: 18px 0 0;
 }
 @media (max-width: 900px) {
+  .num {
+    font-size: 72px;
+  }
   .title {
-    font-size: 28px;
+    font-size: 32px;
+  }
+  .glow {
+    left: -160px;
+    width: 420px;
   }
 }

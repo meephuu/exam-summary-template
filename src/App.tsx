@@ -8,11 +8,14 @@ import { ReadingPosition } from './components/layout/ReadingPosition'
 import { useHashRoute, useHeadings } from './lib/hooks'
 import { getLastChapter } from './lib/readingPosition'
 import { site } from './site.config'
+import { applyChapterAccent } from './styles/themes'
 
 export default function App() {
   const route = useHashRoute()
   // no chapter in the URL → reopen the chapter read last time
   const chapter = findChapter(route || getLastChapter() || '') ?? firstReady()
+  // set before children render, so canvases drawn on mount already use this chapter's colour
+  applyChapterAccent(chapter.accent)
   const contentRef = useRef<HTMLElement>(null)
   const headings = useHeadings(contentRef, chapter.id)
 

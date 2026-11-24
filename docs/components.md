@@ -32,6 +32,17 @@ $1 - (1/2)^3 = 7/8$
 - `<Solution label="ดูเฉลย">` ซ่อนวิธีทำ กดเปิดได้ (ค่าเริ่มต้นของ label คือ "ดูวิธีทำ")
 - `<Compare>` + `<CompareItem title="…">` การ์ดเทียบสองฝั่ง (หรือมากกว่า) บนมือถือเรียงลงล่าง
 
+### รูปประกอบ `<Figure>`
+
+```mdx
+<Figure src="router-analogy" caption="Forwarding vs routing (สไลด์ 4-8)" width={600} />
+```
+
+- `src` = ชื่อไฟล์ใน `src/assets/slides/` **ไม่ต้องใส่ .jpg** (รองรับ .jpg เท่านั้น) · `width` ไม่ใส่ = เต็มคอลัมน์
+- รูปถูกฝังเข้า `dist/index.html` ตอน build (เปิด offline ได้) วางบนการ์ดพื้นขาว เหมาะกับรูปครอปจากสไลด์
+- ครอปจาก PDF: `pdftoppm -r 150 -f N -l N -jpeg file.pdf out` → `convert -crop WxH+X+Y` → ย่อ ≤1000px, jpg q≈78
+- ถ้าชื่อผิดจะขึ้น `[ไม่พบรูป …]` แทน
+
 ## Widget (`components/interactive/`)
 
 | Component | คืออะไร |
@@ -80,6 +91,22 @@ const ref = useCanvas((g, w, h) => {
 | `lib/populations.ts` | ประชากรตัวอย่างที่ CLTSimulator ใช้ |
 | `lib/hooks.ts` | `useCanvas`, `useHashRoute`/`navigate`, `useHeadings`, `useActiveHeading`, `useScrollProgress`, `useAutoHideScrollbar` |
 
+## ควิซ (`components/quiz/`)
+
+หน้า `#/quiz` ข้อสอบตัวเลือก กดแล้วรู้ผลทันที คำตอบจำใน localStorage (`<storagePrefix>:quiz`)
+
+- โจทย์อยู่ `src/chapters/quiz/questions.json` เป็น array ของชุด:
+  ```json
+  { "id": "1", "title": "Review Questions #1", "topic": "บทที่ 1", "by": "อ.…",
+    "questions": [
+      { "n": 1, "parts": ["<p>โจทย์ (HTML)</p>"], "img": [], "choices": ["a", "b", "c"], "answer": [2] }
+    ] }
+  ```
+  - `answer` = index ของข้อถูก (เริ่ม 0) ใส่ได้หลายตัวถ้ารับหลายคำตอบ
+  - รูปในโจทย์: ใส่ชื่อไฟล์ (ไม่มีนามสกุล) ใน `img` แล้วแบ่ง `parts` ตรงที่รูปอยู่ (`parts.length = img.length + 1`) ไฟล์ .jpg/.png วางใน `src/assets/quiz/` กดรูปเพื่อขยายได้
+- ใน MDX: `<QuizOverview />` (คะแนนรวม, ตัวกรอง ทุกข้อ/ยังไม่ทำ/ข้อที่ผิด, ล้างทั้งหมด) และ `<QuizSet id="1" />` ต่อชุด
+- ไม่ใช้: ลบหน้า `quiz` ออกจาก `CHAPTERS` (component ไม่โหลดถ้าไม่มีหน้าไหนเรียก)
+
 ## แผงตารางลอย (`components/panel/`)
 
 ปุ่มมุมขวาล่าง กดแล้วเปิดแผงมีแท็บ ตั้งค่าใน `floatingPanel` ของ `site.config.ts`:
@@ -104,4 +131,7 @@ export const floatingPanel = {
 - `TableOfContents` สารบัญจากหัวข้อ `##` ไฮไลต์หัวข้อที่กำลังอ่าน
 - `ReadingPosition` จำตำแหน่งที่อ่านของแต่ละบท เปิดบทแล้วเลื่อนกลับไปที่เดิมให้ พร้อมแจ้งเตือนเล็กๆ ที่มีปุ่มกลับขึ้นด้านบน
 - `ReadingProgress` แถบความคืบหน้าด้านบน
-- `ChapterHeader` หัวบท: "บทที่ N" + ชื่อ + ที่มา + คำอธิบายสีของกล่อง
+- `ChapterHeader` หัวบท: เลขบทตัวใหญ่ + "Chapter N" + ชื่อ + ที่มา + คำอธิบายสีของกล่อง
+- `AppShell` พับแถบเมนูซ้ายได้ (ปุ่ม ‹ หรือคีย์ `[`, จำค่าไว้) · ชื่อเว็บใหญ่ใช้ `site.brand`/`site.brandSub` ถ้าตั้งไว้
+- `PageSearch` ค้นหาข้อความในหน้า มุมขวาบน: ปุ่ม / `Ctrl+F` / `/` เปิด · `Enter`/`Shift+Enter` ถัดไป/ก่อนหน้า · `Esc` ปิด · กด `Ctrl+F` ซ้ำในช่อง = find ของเบราว์เซอร์ · ค้นใน `<Solution>` ที่พับอยู่ด้วยแล้วกางให้ · สีไฮไลต์ `::highlight(page-search…)` ใน `styles/global.css`
+- สีประจำบท: ใส่ `accent: '#hex'` ในบทนั้นใน `CHAPTERS` → หัวข้อ, widget, ป้ายเลขในเมนูเปลี่ยนสีตาม (`applyChapterAccent` ใน `styles/themes.ts`)

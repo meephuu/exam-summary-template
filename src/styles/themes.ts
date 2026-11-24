@@ -141,3 +141,19 @@ export function applyTheme(cfg: ThemeConfig) {
   link.type = 'image/svg+xml'
   link.href = 'data:image/svg+xml,' + encodeURIComponent(svg)
 }
+
+/** Per-chapter accent: overrides --accent / --accent-soft on <html>. Undefined → back to the theme accent. */
+let currentAccent: string | undefined
+export function applyChapterAccent(hex?: string) {
+  if (hex === currentAccent) return
+  currentAccent = hex
+  const st = document.documentElement.style
+  if (!hex) {
+    st.removeProperty('--accent')
+    st.removeProperty('--accent-soft')
+    return
+  }
+  const surface = getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || '#0f0f0f'
+  st.setProperty('--accent', hex)
+  st.setProperty('--accent-soft', mixHex(surface, hex, 0.14))
+}

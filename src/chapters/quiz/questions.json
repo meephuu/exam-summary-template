@@ -1,0 +1,115 @@
+[
+ {
+  "id": "1",
+  "title": "ตัวอย่างชุดที่ 1",
+  "topic": "Descriptive statistics",
+  "by": "ตัวอย่าง",
+  "questions": [
+   {
+    "n": 1,
+    "parts": [
+     "<p>Mean ของข้อมูล 2, 4, 6, 8, 10 เท่ากับเท่าไร</p>"
+    ],
+    "img": [],
+    "choices": [
+     "5",
+     "6",
+     "7",
+     "30"
+    ],
+    "answer": [
+     1
+    ]
+   },
+   {
+    "n": 2,
+    "parts": [
+     "<p>ค่าไหน<strong>ทนต่อ outlier</strong> ที่สุด</p>"
+    ],
+    "img": [],
+    "choices": [
+     "Mean",
+     "Range",
+     "Standard deviation",
+     "Median"
+    ],
+    "answer": [
+     3
+    ]
+   },
+   {
+    "n": 3,
+    "parts": [
+     "<p>ถ้าบวกค่าคงที่ <code>c</code> ให้ข้อมูลทุกตัว Var(X + c) เท่ากับ</p>"
+    ],
+    "img": [],
+    "choices": [
+     "Var(X)",
+     "Var(X) + c",
+     "Var(X) + c²",
+     "c · Var(X)"
+    ],
+    "answer": [
+     0
+    ]
+   }
+  ]
+ },
+ {
+  "id": "2",
+  "title": "ตัวอย่างชุดที่ 2",
+  "topic": "Normal distribution",
+  "by": "ตัวอย่าง",
+  "questions": [
+   {
+    "n": 1,
+    "parts": [
+     "<p>Z ~ N(0, 1) แล้ว P(Z &lt; 0) เท่ากับ</p>"
+    ],
+    "img": [],
+    "choices": [
+     "0.25",
+     "0.68",
+     "0.5",
+     "1"
+    ],
+    "answer": [
+     2
+    ]
+   },
+   {
+    "n": 2,
+    "parts": [
+     "<p>ข้อมูลแจกแจงปกติประมาณ 95% อยู่ในช่วง μ ± กี่ σ</p>"
+    ],
+    "img": [],
+    "choices": [
+     "1σ",
+     "2σ",
+     "3σ",
+     "4σ"
+    ],
+    "answer": [
+     1
+    ]
+   },
+   {
+    "n": 3,
+    "parts": [
+     "<p>ข้อไหนเป็นการแจกแจงแบบต่อเนื่อง (ข้อนี้รับได้ 2 คำตอบ)</p>"
+    ],
+    "img": [],
+    "choices": [
+     "Binomial",
+     "Normal",
+     "Poisson",
+     "Exponential"
+    ],
+    "answer": [
+     1,
+     3
+    ]
+   }
+  ]
+ }
+]

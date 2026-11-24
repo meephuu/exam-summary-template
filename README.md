@@ -2,6 +2,7 @@
 
 Template สำหรับทำ**เว็บสรุปเนื้อหาก่อนสอบ** (React + Vite + MDX + KaTeX) แยกมาจากเว็บสรุปสถิติ CEM II
 เขียนเนื้อหาเป็น Markdown ได้ มีกล่องนิยาม/ตัวอย่าง/ทิป, สูตรคณิต, widget ให้เลื่อนเล่น, แผงตารางลอย และธีมสีที่เปลี่ยนได้
+มีช่องค้นหาในหน้า, พับเมนูได้, สีประจำบท, รูปจากสไลด์ และหน้าควิซ (รายการเต็ม: [`FEATURES.md`](FEATURES.md))
 build ออกมาเป็น **HTML ไฟล์เดียว** ส่งต่อหรือเปิดแบบ offline ได้ และ deploy ขึ้น GitHub Pages อัตโนมัติ
 
 ## เริ่มวิชาใหม่
@@ -82,10 +83,12 @@ npm run typecheck   # ตรวจ TypeScript
 src/site.config.ts              ⚙️ ตั้งค่าทั้งหมด (ชื่อ, ธีม, บท, แผงตาราง)
 src/chapters/<folder>/content.mdx   เนื้อหาแต่ละบท
 src/chapters/registry.ts        type ของบท + helper (ปกติไม่ต้องแก้)
-src/components/content/         Callout (Def/Example/Warn/Tip), Solution, Compare, mdxComponents.ts ← ลงทะเบียน component ให้ MDX
+src/components/content/         Callout (Def/Example/Warn/Tip), Solution, Compare, Figure, mdxComponents.ts ← ลงทะเบียน component ให้ MDX
 src/components/interactive/     Widget, Slider, ExampleWidget (ตัวเริ่มต้น), NormalArea, CLTSimulator
+src/components/quiz/            Quiz (QuizOverview, QuizSet) – โจทย์ใน src/chapters/quiz/questions.json
+src/assets/slides/, assets/quiz/ รูปสำหรับ <Figure> และรูปในโจทย์ควิซ
 src/components/panel/           FloatingPanel + PanelParts (Grid/Note/Calc/NumInput/Toggle), statTables (z/t/χ²), exampleTab
-src/components/layout/          AppShell, ChapterMenu, TableOfContents, ChapterHeader, ReadingPosition, ReadingProgress
+src/components/layout/          AppShell, PageSearch, ChapterMenu, TableOfContents, ChapterHeader, ReadingPosition, ReadingProgress
 src/lib/                        math, plot (drawFrame/cssVar/withAlpha), hooks (useCanvas, hash routing), random, populations, readingPosition
 src/styles/themes.ts            preset สีและตัวสร้างธีม
 src/styles/                     theme.css (ฟอนต์/ขนาด), global, prose, fonts (Google Sans ไทย/อังกฤษ/กรีก แบบฝังในไฟล์)

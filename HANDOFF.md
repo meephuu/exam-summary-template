@@ -14,7 +14,9 @@
 ## ตั้งค่าเริ่มต้น (ทำครั้งเดียว ติ๊กเมื่อเสร็จ)
 
 - [ ] แก้ `site` ใน `src/site.config.ts` (ชื่อเว็บ, วิชา, `storagePrefix`) และ `<title>` ใน `index.html`
-- [ ] เลือกธีมสีใน `theme`
+- [ ] เลือกธีมสีใน `theme` (และ `accent` ประจำบทถ้าอยากให้แต่ละบทสีต่างกัน)
+- [ ] ตั้ง `site.brand` / `site.brandSub` (หรือปล่อย `''` ให้ใช้ `title`)
+- [ ] หน้าควิซ: ใส่โจทย์ใน `src/chapters/quiz/questions.json` หรือลบหน้า `quiz` ออกจาก `CHAPTERS`
 - [ ] ตั้ง `floatingPanel` (ใช้ตาราง z/t/χ² ไหม / แท็บของวิชานี้ / `null`)
 - [ ] ลบบทตัวอย่าง `00-getting-started`, `01-widgets` และ widget สถิติที่ไม่ใช้
 - [ ] กรอก TODO ใน `CLAUDE.md`

@@ -31,9 +31,10 @@
 - `##` = ส่วนใหญ่ (มีเลขและสารบัญอัตโนมัติ ห้ามใส่เลขเอง) · `###` = หัวข้อย่อย
 - กล่อง: `<Def>` นิยาม · `<Example>` ตัวอย่าง (วิธีทำซ่อนใน `<Solution>`) · `<Warn>` จุดที่คนพลาด · `<Tip>` ทิปสอบ · `<Compare>/<CompareItem>` เทียบสองฝั่ง
 - ใส่ตัวอย่างจากเอกสารครบพร้อมเฉลย และโยงข้อสอบเก่าเมื่อเกี่ยวข้อง
+- รูปจากสไลด์: `<Figure src="…" caption="…" />` (ไฟล์ใน `src/assets/slides/`)
 - widget เล่นได้ 2–3 ตัวต่อบท (เฉพาะเรื่องที่เห็นภาพแล้วเข้าใจขึ้นจริง)
 - ปิดบทด้วย `## สรุปสูตร + แบบฝึกหัด` (ตารางสูตร, แบบฝึกหัด 5 ข้อมีเฉลย, `<Tip title="บทต่อไป">`)
-- รายละเอียด component ทั้งหมด: `docs/components.md`
+- รายละเอียด component ทั้งหมด: `docs/components.md` · ฟีเจอร์ทั้งหมดของ template: `FEATURES.md`
 
 ## โค้ด
 
@@ -43,10 +44,11 @@ React 19 + Vite 8 + TypeScript + MDX (`remark-math` + `rehype-katex` render ส�
 ```
 src/site.config.ts                  ⚙️ ชื่อเว็บ, ธีมสี, รายชื่อบท (CHAPTERS), แผงตารางลอย
 src/chapters/<folder>/content.mdx   เนื้อหาแต่ละบท
-src/components/content/             Callout(Def/Example/Warn/Tip), Solution, Compare, mdxComponents.ts ← ลงทะเบียน component ให้ MDX ที่นี่
+src/components/content/             Callout(Def/Example/Warn/Tip), Solution, Compare, Figure, mdxComponents.ts ← ลงทะเบียน component ให้ MDX ที่นี่
 src/components/interactive/         Widget/Controls/ButtonRow/Readout/PlotCanvas, Slider, ExampleWidget (แบบสำหรับ widget ใหม่)
 src/components/panel/               FloatingPanel + PanelParts, statTables (z/t/χ²), exampleTab
-src/components/layout/              AppShell, ChapterMenu, TableOfContents, ChapterHeader, ReadingPosition, ReadingProgress
+src/components/quiz/                Quiz (โจทย์ใน src/chapters/quiz/questions.json, รูปใน src/assets/quiz/)
+src/components/layout/              AppShell, PageSearch, ChapterMenu, TableOfContents, ChapterHeader, ReadingPosition, ReadingProgress
 src/lib/                            math, plot (drawFrame/drawMarker/cssVar/withAlpha), hooks (useCanvas, hash routing), random, readingPosition
 src/styles/themes.ts                preset สี + สร้าง CSS ธีม (สีทั้งหมดเป็น hex)
 ```

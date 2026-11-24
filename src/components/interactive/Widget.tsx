@@ -11,7 +11,10 @@ interface Props {
 export function Widget({ title, hint, children }: Props) {
   return (
     <div className={styles.widget}>
-      <h4 className={styles.title}>🔬 ลองเล่น: {title}</h4>
+      <h4 className={styles.title}>
+        <span className={styles.tag}>ลองเล่น</span>
+        {title}
+      </h4>
       {hint && <p className={styles.hint}>{hint}</p>}
       {children}
     </div>
